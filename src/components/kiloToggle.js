@@ -3,9 +3,6 @@ import React from 'react';
 const KiloToggle = ({ convertWeight, calcWeight, bar, weight }) => {
   const handleClick = (e) => {
     convertWeight(e.target.value);
-    if (bar && weight) {
-      calcWeight(bar, weight, e.target.value);
-    }
   };
 
   return (

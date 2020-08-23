@@ -17,22 +17,26 @@ const App = () => {
 
   // Make a function that will convert Pounds to Kilos
   function convertWeight(u) {
+    let units_;
+
     if (u === 'POUNDS') {
-      setUnits(POUNDS);
+      units_ = POUNDS;
     }
     if (u === 'KILOS') {
-      setUnits(KILOS);
+      units_ = KILOS;
     }
+    if (bar && weight) {
+      calcWeight(bar, weight, units_);
+    }
+    setUnits(units_);
   }
 
   // Function to calculate selected bar with inputted weight and send to DisplayWeight Component
   const calcWeight = (barWeight, userWeight, weightMetric) => {
     let plates = units;
-    if (weightMetric === 'POUNDS') {
-      plates = POUNDS;
-    }
-    if (weightMetric === 'KILOS') {
-      plates = KILOS;
+
+    if (weightMetric) {
+      plates = weightMetric;
     }
 
     let calculated = [];
