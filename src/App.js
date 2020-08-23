@@ -3,16 +3,38 @@ import React, { useState } from 'react';
 import WeightInput from './components/weightInput';
 import DisplayWeight from './components/displayWeight';
 import BarToggle from './components/barToggle';
+import KiloToggle from './components/kiloToggle';
 
 const App = () => {
   const [weight, setWeight] = useState(null);
   const [bar, setBar] = useState(null);
   const [total, setTotal] = useState(null);
   const [remaining, setRemaining] = useState(null);
+  const [units, setUnits] = useState([]);
+
+  const POUNDS = [45, 35, 25, 15, 10, 5, 2.5];
+  const KILOS = [20, 15, 10, 5, 2.5, 1.25];
+
+  // Make a function that will convert Pounds to Kilos
+  function convertWeight(u) {
+    if (u === 'POUNDS') {
+      setUnits(POUNDS);
+    }
+    if (u === 'KILOS') {
+      setUnits(KILOS);
+    }
+  }
 
   // Function to calculate selected bar with inputted weight and send to DisplayWeight Component
-  const calcWeight = (barWeight, userWeight) => {
-    let plates = [45, 35, 25, 15, 10, 5, 2.5];
+  const calcWeight = (barWeight, userWeight, weightMetric) => {
+    let plates = units;
+    if (weightMetric === 'POUNDS') {
+      plates = POUNDS;
+    }
+    if (weightMetric === 'KILOS') {
+      plates = KILOS;
+    }
+
     let calculated = [];
 
     let remainingWeight = userWeight - barWeight;
@@ -34,7 +56,13 @@ const App = () => {
 
   return (
     <div className='block text-center'>
-      <h1 className='mt-20 text-2xl'>Barbell Buddy</h1>
+      <KiloToggle
+        weight={weight}
+        bar={bar}
+        calcWeight={calcWeight}
+        convertWeight={convertWeight}
+      />
+      <h1 className='mt-20 text-3xl'>Barbell Buddy</h1>
       <BarToggle bar={bar} setBar={setBar} />
       <WeightInput
         bar={bar}
@@ -42,7 +70,9 @@ const App = () => {
         weight={weight}
         setWeight={setWeight}
       />
-      {total && <DisplayWeight total={total} remaining={remaining} />}
+      {total && (
+        <DisplayWeight units={units} total={total} remaining={remaining} />
+      )}
     </div>
   );
 };

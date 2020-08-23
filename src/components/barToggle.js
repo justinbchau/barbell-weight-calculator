@@ -30,7 +30,7 @@ const BarToggle = ({ bar, setBar }) => {
           Womens
         </label>
       </fieldset>
-      {/* <h1>{bar}</h1> */}
+      <h1>{bar}</h1>
     </div>
   );
 };

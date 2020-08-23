@@ -4,7 +4,9 @@ const weightInput = ({ weight, setWeight, bar, calcWeight }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (bar === null) {
-      console.log('no weight selected');
+      throwError();
+    } else if (weight === null) {
+      throwError();
     } else {
       calcWeight(bar, weight);
     }
@@ -24,7 +26,7 @@ const weightInput = ({ weight, setWeight, bar, calcWeight }) => {
       <form
         className='mt-15 bg-gray-400 shadow-md rounded px-8 py-8 pt-8'
         action=''
-        onSubmit={bar ? handleSubmit : throwError}
+        onSubmit={handleSubmit}
         onChange={handleChange}
       >
         <div className='px-4 pb-4'>
