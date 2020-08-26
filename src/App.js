@@ -60,13 +60,15 @@ const App = () => {
 
   return (
     <div className='block text-center'>
-      <KiloToggle
-        weight={weight}
-        bar={bar}
-        calcWeight={calcWeight}
-        convertWeight={convertWeight}
-      />
-      <h1 className='mt-20 text-3xl'>Barbell Buddy</h1>
+      <div className='absolute right-0 top-0'>
+        <KiloToggle
+          weight={weight}
+          bar={bar}
+          calcWeight={calcWeight}
+          convertWeight={convertWeight}
+        />
+      </div>
+      <h1 className='pt-20 text-3xl'>Barbell Buddy</h1>
       <BarToggle bar={bar} setBar={setBar} />
       <WeightInput
         bar={bar}
