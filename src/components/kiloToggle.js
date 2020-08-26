@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Conversion from './UI/Conversion';
 
-const KiloToggle = ({ convertWeight, calcWeight, bar, weight }) => {
+const KiloToggle = ({ convertWeight }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const clickToggle = () => {
@@ -21,7 +21,19 @@ const KiloToggle = ({ convertWeight, calcWeight, bar, weight }) => {
           </svg>
         </button>
       </div>
-      <div>{isOpen && <Conversion convertWeight={convertWeight} />}</div>
+      <div
+        className={
+          isOpen
+            ? 'opacity-100 transition duration-300 ease-in-out'
+            : 'opacity-0 transition duration-300 ease-in-out'
+        }
+      >
+        <Conversion
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          convertWeight={convertWeight}
+        />
+      </div>
     </div>
   );
 };
