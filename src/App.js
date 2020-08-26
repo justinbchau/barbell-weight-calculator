@@ -76,9 +76,11 @@ const App = () => {
         weight={weight}
         setWeight={setWeight}
       />
-      {total && (
-        <DisplayWeight units={units} total={total} remaining={remaining} />
-      )}
+      <div>
+        {total && (
+          <DisplayWeight units={units} total={total} remaining={remaining} />
+        )}
+      </div>
     </div>
   );
 };
