@@ -1,9 +1,19 @@
 import React from 'react';
 
-const BarToggle = ({ bar, setBar }) => {
+const BarToggle = ({ bar, setBar, metric }) => {
   const handleClick = (e) => {
     setBar(e.target.value);
   };
+
+  //   const menBarWeight = () => {
+  //     if (metric === 'lbs') {
+  //       return 45;
+  //     }
+
+  //     if (metric === 'kg') {
+  //       return 22;
+  //     }
+  //   };
 
   return (
     <div className='mt-5 mb-5'>
@@ -30,7 +40,9 @@ const BarToggle = ({ bar, setBar }) => {
           Womens
         </label>
       </fieldset>
-      <h1>{bar}</h1>
+      <div className='flex justify-center'>
+        <h1>{bar}</h1> {bar && <p>{metric}</p>}
+      </div>
     </div>
   );
 };

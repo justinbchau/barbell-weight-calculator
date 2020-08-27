@@ -6,14 +6,28 @@ import BarToggle from './components/barToggle';
 import KiloToggle from './components/kiloToggle';
 
 const App = () => {
+  const POUNDS = [45, 35, 25, 15, 10, 5, 2.5];
+  const KILOS = [20, 15, 10, 5, 2.5, 1.25];
+
   const [weight, setWeight] = useState(null);
   const [bar, setBar] = useState(null);
   const [total, setTotal] = useState(null);
   const [remaining, setRemaining] = useState(null);
-  const [units, setUnits] = useState([]);
+  const [units, setUnits] = useState(POUNDS);
+  const [metric, setMetric] = useState('lbs');
 
-  const POUNDS = [45, 35, 25, 15, 10, 5, 2.5];
-  const KILOS = [20, 15, 10, 5, 2.5, 1.25];
+  const mensBarWeight = () => {
+    let value;
+
+    if (metric === 'lbs') {
+      value = 45;
+    }
+
+    if (metric === 'kg') {
+      value = 22;
+    }
+    return value;
+  };
 
   // Make a function that will convert Pounds to Kilos
   function convertWeight(u) {
@@ -21,9 +35,12 @@ const App = () => {
 
     if (u === 'POUNDS') {
       units_ = POUNDS;
+      setMetric('lbs');
+      console.log(mensBarWeight());
     }
     if (u === 'KILOS') {
       units_ = KILOS;
+      setMetric('kg');
     }
     if (bar && weight) {
       calcWeight(bar, weight, units_);
@@ -69,14 +86,17 @@ const App = () => {
         />
       </div>
       <h1 className='pt-20 text-3xl'>Barbell Buddy</h1>
-      <BarToggle bar={bar} setBar={setBar} />
+      <BarToggle bar={bar} setBar={setBar} metric={metric} />
       <WeightInput
         bar={bar}
         calcWeight={calcWeight}
         weight={weight}
         setWeight={setWeight}
+        metric={metric}
       />
-      <div>
+      <div
+        className={total ? 'transition duration-500 opacity-100' : 'opacity-0'}
+      >
         {total && (
           <DisplayWeight units={units} total={total} remaining={remaining} />
         )}

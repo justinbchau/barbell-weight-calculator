@@ -1,6 +1,6 @@
 import React from 'react';
 
-const weightInput = ({ weight, setWeight, bar, calcWeight }) => {
+const weightInput = ({ weight, setWeight, bar, calcWeight, metric }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (bar === null) {
@@ -33,11 +33,15 @@ const weightInput = ({ weight, setWeight, bar, calcWeight }) => {
           <label className='text-sm block font-bold  pb-2' htmlFor='weight'>
             Weight Needed:
           </label>
-          <input
-            type='text'
-            name='weight'
-            className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300'
-          />
+          <div className='flex items-center'>
+            <input
+              type='text'
+              name='weight'
+              className='shadow appearance-none border w-full rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300'
+            />
+
+            <p className='ml-2'>{metric}</p>
+          </div>
           <input
             className='mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
             type='submit'

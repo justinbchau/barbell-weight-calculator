@@ -22,7 +22,7 @@ const KiloToggle = ({ convertWeight }) => {
         </button>
       </div>
       <div
-        className={`border border-gray-300 shadow rounded transition duration-300 p-5 bg-gray-400 ${
+        className={`border border-gray-300 shadow rounded transition duration-300 mr-3 p-1 lg:p-5 bg-gray-400 ${
           isOpen ? 'opacity-100' : 'opacity-0'
         }`}
       >

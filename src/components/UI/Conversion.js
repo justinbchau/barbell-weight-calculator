@@ -17,6 +17,7 @@ const Conversion = ({ convertWeight, isOpen, setIsOpen }) => {
             type='radio'
             name='weight'
             value='POUNDS'
+            defaultChecked
           />
           <label className='p-2' htmlFor='pounds'>
             Pounds
