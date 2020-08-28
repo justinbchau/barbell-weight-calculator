@@ -17,7 +17,8 @@ const BarToggle = ({ bar, setBar, metric, mensBar, womensBar }) => {
           value={mensBar}
         />
         <label className='pr-3 pl-1' htmlFor='mens-bar'>
-          Mens
+          Mens ({mensBar}
+          {metric})
         </label>
         <input
           onChange={handleClick}
@@ -27,12 +28,10 @@ const BarToggle = ({ bar, setBar, metric, mensBar, womensBar }) => {
           value={womensBar}
         />
         <label className='pr-3 pl-1' htmlFor='womens-bar'>
-          Womens
+          Womens ({womensBar}
+          {metric})
         </label>
       </fieldset>
-      {/* <div className='flex justify-center'>
-        <h1>{bar}</h1> {bar && <p>{metric}</p>}
-      </div> */}
     </div>
   );
 };

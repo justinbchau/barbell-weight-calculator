@@ -12,7 +12,7 @@ const Conversion = ({ convertWeight, isOpen, setIsOpen }) => {
       <div>
         <fieldset className='mt-2 mb-2'>
           <input
-            onClick={handleClick}
+            onChange={handleClick}
             id='pounds'
             type='radio'
             name='weight'
@@ -25,7 +25,7 @@ const Conversion = ({ convertWeight, isOpen, setIsOpen }) => {
         </fieldset>
         <fieldset>
           <input
-            onClick={handleClick}
+            onChange={handleClick}
             id='kilos'
             type='radio'
             name='weight'
