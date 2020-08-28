@@ -1,19 +1,9 @@
 import React from 'react';
 
-const BarToggle = ({ bar, setBar, metric }) => {
+const BarToggle = ({ bar, setBar, metric, mensBar, womensBar }) => {
   const handleClick = (e) => {
     setBar(e.target.value);
   };
-
-  //   const menBarWeight = () => {
-  //     if (metric === 'lbs') {
-  //       return 45;
-  //     }
-
-  //     if (metric === 'kg') {
-  //       return 22;
-  //     }
-  //   };
 
   return (
     <div className='mt-5 mb-5'>
@@ -24,7 +14,7 @@ const BarToggle = ({ bar, setBar, metric }) => {
           id='mens-bar'
           type='radio'
           name='bar'
-          value={45}
+          value={mensBar}
         />
         <label className='pr-3 pl-1' htmlFor='mens-bar'>
           Mens
@@ -34,15 +24,15 @@ const BarToggle = ({ bar, setBar, metric }) => {
           id='womens-bar'
           type='radio'
           name='bar'
-          value={35}
+          value={womensBar}
         />
         <label className='pr-3 pl-1' htmlFor='womens-bar'>
           Womens
         </label>
       </fieldset>
-      <div className='flex justify-center'>
+      {/* <div className='flex justify-center'>
         <h1>{bar}</h1> {bar && <p>{metric}</p>}
-      </div>
+      </div> */}
     </div>
   );
 };

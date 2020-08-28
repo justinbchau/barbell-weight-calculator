@@ -16,18 +16,8 @@ const App = () => {
   const [units, setUnits] = useState(POUNDS);
   const [metric, setMetric] = useState('lbs');
 
-  const mensBarWeight = () => {
-    let value;
-
-    if (metric === 'lbs') {
-      value = 45;
-    }
-
-    if (metric === 'kg') {
-      value = 22;
-    }
-    return value;
-  };
+  const [mensBar, setMensBar] = useState(45);
+  const [womensBar, setWomensBar] = useState(35);
 
   // Make a function that will convert Pounds to Kilos
   function convertWeight(u) {
@@ -36,13 +26,17 @@ const App = () => {
     if (u === 'POUNDS') {
       units_ = POUNDS;
       setMetric('lbs');
-      console.log(mensBarWeight());
+      setMensBar(45);
+      setWomensBar(35);
     }
     if (u === 'KILOS') {
       units_ = KILOS;
       setMetric('kg');
+      setMensBar(20);
+      setWomensBar(15);
     }
     if (bar && weight) {
+      console.log('i am here');
       calcWeight(bar, weight, units_);
     }
     setUnits(units_);
@@ -86,7 +80,13 @@ const App = () => {
         />
       </div>
       <h1 className='pt-20 text-3xl'>Barbell Buddy</h1>
-      <BarToggle bar={bar} setBar={setBar} metric={metric} />
+      <BarToggle
+        mensBar={mensBar}
+        womensBar={womensBar}
+        bar={bar}
+        setBar={setBar}
+        metric={metric}
+      />
       <WeightInput
         bar={bar}
         calcWeight={calcWeight}
